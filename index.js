@@ -1,20 +1,15 @@
-var express = require('express');
-var app = express();
-const bodyParser = require('body-parser');
+const app = require('./app');
+const database = require('./database');
+const config = require('./config');
 
-const arr = ['hello', 'world', 'test'];
-app.use(bodyParser.urlencoded({ extended: true }));
-app.set('view engine', 'ejs');
-app.get('/', function(req, res) {
-  res.render('index', { arr: arr });
-});
-app.get('/create', function(req, res) {
-  res.render('create');
-});
-app.post('/create', function(req, res) {
-  arr.push(req.body.text);
-  res.redirect('/');
-});
-app.listen(3000, function() {
-  console.log('Example app listening on port 3000!');
-});
+database()
+  .then(info => {
+    console.log(`Connected to ${info.host}:${info.port}/${info.name}`);
+    app.listen(config.PORT, function() {
+      console.log(`Example app listening on port ${config.PORT}!`);
+    });
+  })
+  .catch(() => {
+    console.log('Unable connect to database');
+    process.exit(1);
+  });

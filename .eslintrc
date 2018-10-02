@@ -1,5 +1,5 @@
 {
-  "plugins": ["node", "prettier"],
+  "plugins": ["node", "prettier", "ejs"],
   "extends": ["eslint:recommended", "plugin:node/recommended"],
   "rules": {
     "node/exports-style": ["error", "module.exports"],

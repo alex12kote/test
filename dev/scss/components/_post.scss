@@ -1,0 +1,27 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $greyColor;
+  padding: $freeSpace;
+  margin-bottom: $freeSpace;
+  background-color: $whiteColor;
+  //background-color: $whiteColor;
+
+  .top {
+    h2 {
+      margin-top: 0;
+    }
+  }
+
+  .body {
+    p {
+      text-align: justify;
+    }
+  }
+
+  .bottom {
+    display: flex;
+    font-size: 0.9em;
+    justify-content: space-between;
+  }
+}
